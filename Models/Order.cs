@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EBook.Models 
+namespace BookShoppingCartMvcUI.Models 
 {
     
     public class Order

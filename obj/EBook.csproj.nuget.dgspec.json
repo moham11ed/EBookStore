@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\.NET\\MVC\\project\\EBook\\EBook.csproj": {}
+    "D:\\folder B\\lectures .net\\EBookStore-main\\EBookStore\\EBook.csproj": {}
   },
   "projects": {
-    "E:\\.NET\\MVC\\project\\EBook\\EBook.csproj": {
+    "D:\\folder B\\lectures .net\\EBookStore-main\\EBookStore\\EBook.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\.NET\\MVC\\project\\EBook\\EBook.csproj",
+        "projectUniqueName": "D:\\folder B\\lectures .net\\EBookStore-main\\EBookStore\\EBook.csproj",
         "projectName": "EBook",
-        "projectPath": "E:\\.NET\\MVC\\project\\EBook\\EBook.csproj",
-        "packagesPath": "C:\\Users\\saied\\.nuget\\packages\\",
-        "outputPath": "E:\\.NET\\MVC\\project\\EBook\\obj\\",
+        "projectPath": "D:\\folder B\\lectures .net\\EBookStore-main\\EBookStore\\EBook.csproj",
+        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+        "outputPath": "D:\\folder B\\lectures .net\\EBookStore-main\\EBookStore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\saied\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -44,7 +44,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -88,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
