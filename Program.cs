@@ -3,6 +3,7 @@ using BookShoppingCartMvcUI.Data;
 using BookShoppingCartMvcUI.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace BookShoppingCartMvcUI
 {
@@ -22,13 +23,15 @@ namespace BookShoppingCartMvcUI
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString));
 
-            builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultUI()
                 .AddDefaultTokenProviders();
 
             builder.Services.AddControllersWithViews();
             builder.Services.AddTransient<IHomeRepository, HomeRepository>();
+            builder.Services.AddTransient<DbSeeder>(); //  ”ÃÌ· DbSeeder
 
             var app = builder.Build();
 
@@ -36,14 +39,18 @@ namespace BookShoppingCartMvcUI
             using (var scope = app.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
+                var logger = services.GetService<ILogger<Program>>();
+                var dbSeeder = services.GetService<DbSeeder>();
                 try
                 {
-                    await DbSeeder.SeedDefaultData(services);
+                    if (dbSeeder != null)
+                    {
+                        await dbSeeder.SeedDefaultData();
+                    }
                 }
                 catch (Exception ex)
                 {
-                    // Log the error (e.g., using a logger)
-                    Console.WriteLine($"An error occurred while seeding the database: {ex.Message}");
+                    logger?.LogError(ex, "An error occurred while seeding the database.");
                 }
             }
 
@@ -56,11 +63,13 @@ namespace BookShoppingCartMvcUI
 
             app.UseStaticFiles();
             app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+            app.MapRazorPages();
 
             app.Run();
         }
