@@ -1,6 +1,7 @@
-using System.Diagnostics;
-using BookShoppingCartMvcUI.Models;
+﻿using BookShoppingCartMvcUI.Models;
+using BookShoppingCartMvcUI.Models.DTOs;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace BookShoppingCartMvcUI.Controllers
 {
@@ -11,14 +12,22 @@ namespace BookShoppingCartMvcUI.Controllers
 
         public HomeController(ILogger<HomeController> logger, IHomeRepository homeRepository)
         {
-            _logger = logger;
             _homeRepository = homeRepository;
+            _logger = logger;
         }
 
-        public async Task<IActionResult> Index(string sterm ="", int genreId = 0)
+        public async Task<IActionResult> Index(string sterm = "", int genreId = 0)
         {
-            IEnumerable<Book> books = await _homeRepository.GetBooks(sterm,genreId);
-            return View(books);
+            IEnumerable<Book> books = await _homeRepository.GetBooks(sterm, genreId);
+            IEnumerable<GenreController> genres = await _homeRepository.Genres();
+            BookDisplayModel bookModel = new BookDisplayModel
+            {
+                Books = books,
+                Genres = genres,
+                STerm = sterm,
+                GenreId = genreId
+            };
+            return View(bookModel);
         }
 
         public IActionResult Privacy()

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\folder B\\lectures .net\\EBookStore-main\\EBookStore\\BookShoppingCartMvcUI.csproj": {}
+    "D:\\🧑‍💻 ITI 🧑‍💻\\DotNet\\MVC\\EBookStore\\EBookStore\\BookShoppingCartMvcUI.csproj": {}
   },
   "projects": {
-    "D:\\folder B\\lectures .net\\EBookStore-main\\EBookStore\\BookShoppingCartMvcUI.csproj": {
+    "D:\\🧑‍💻 ITI 🧑‍💻\\DotNet\\MVC\\EBookStore\\EBookStore\\BookShoppingCartMvcUI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\folder B\\lectures .net\\EBookStore-main\\EBookStore\\BookShoppingCartMvcUI.csproj",
+        "projectUniqueName": "D:\\🧑‍💻 ITI 🧑‍💻\\DotNet\\MVC\\EBookStore\\EBookStore\\BookShoppingCartMvcUI.csproj",
         "projectName": "BookShoppingCartMvcUI",
-        "projectPath": "D:\\folder B\\lectures .net\\EBookStore-main\\EBookStore\\BookShoppingCartMvcUI.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "D:\\folder B\\lectures .net\\EBookStore-main\\EBookStore\\obj\\",
+        "projectPath": "D:\\🧑‍💻 ITI 🧑‍💻\\DotNet\\MVC\\EBookStore\\EBookStore\\BookShoppingCartMvcUI.csproj",
+        "packagesPath": "C:\\Users\\Ziad's PC\\.nuget\\packages\\",
+        "outputPath": "D:\\🧑‍💻 ITI 🧑‍💻\\DotNet\\MVC\\EBookStore\\EBookStore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Ziad's PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -44,7 +44,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -71,6 +71,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.17, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[8.0.7, )"
             }
           },
           "imports": [
@@ -92,7 +96,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
