@@ -1,0 +1,36 @@
+﻿@model StockDTO
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5" style="max-width: 400px;">
+    <div class="card shadow-sm rounded-4">
+        <div class="card-header bg-info text-white rounded-top-4">
+            <h3 class="mb-0">Manage Stock</h3>
+        </div>
+
+        <div class="card-body">
+            <a asp-action="Index" asp-controller="Stock" class="btn btn-secondary mb-3">← Back to Stocks</a>
+
+            <form asp-action="ManangeStock" method="post" novalidate>
+                <input type="hidden" asp-for="BookId" />
+
+                <div class="mb-3">
+                    <label asp-for="Quantity" class="form-label fw-semibold">Quantity</label>
+                    <input type="number" class="form-control" asp-for="Quantity" min="0" />
+                    <span asp-validation-for="Quantity" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-info w-100 fw-semibold">
+                    Update Stock
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

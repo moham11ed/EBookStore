@@ -1,0 +1,53 @@
+﻿@model OrderDetailModalDTO
+
+<div class="modal fade" id="modal-@Model.DivId" tabindex="-1" aria-labelledby="orderDetailModalLabel-@Model.DivId" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="orderDetailModalLabel-@Model.DivId">
+                     Order Details
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                @if (Model.OrderDetail != null && Model.OrderDetail.Any())
+                {
+                    <table class="table table-bordered align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th> Book</th>
+                                <th> Genre</th>
+                                <th> Unit Price</th>
+                                <th> Quantity</th>
+                                <th> Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.OrderDetail)
+                            {
+                                <tr>
+                                    <td>@item.Book.BookName</td>
+                                    <td>@item.Book.Genre.GenreName</td>
+                                    <td>@item.UnitPrice EGP</td>
+                                    <td>@item.Quantity</td>
+                                    <td class="fw-bold text-success">@((item.UnitPrice * item.Quantity).ToString("0.00")) EGP</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <div class="alert alert-warning">
+                        No items in this order.
+                    </div>
+                }
+            </div>
+
+            <div class="modal-footer bg-light">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

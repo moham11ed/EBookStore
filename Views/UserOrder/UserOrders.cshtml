@@ -1,0 +1,93 @@
+﻿
+
+@model IEnumerable<Order>
+
+@{
+    ViewData["Title"] = "My Orders";
+}
+<h3 class="mb-4">🧾 My Orders</h3>
+
+    @if (Model != null && Model.Any())
+    {
+        @foreach (var order in Model)
+        {
+            <div class="card shadow-sm mb-4 border-start border-4 border-info rounded-4">
+                <div class="card-header bg-light d-flex justify-content-between">
+                    <div>
+                        <strong>📅 Order Date:</strong> @order.CreateDate.ToString("dd-MM-yyyy")
+                    </div>
+                    <div>
+                        <strong>Status:</strong>
+                        <span class="badge bg-secondary">@order.OrderStatus.StatusName</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    @if (order.OrderDetail != null && order.OrderDetail.Any())
+                    {
+                        <table class="table table-hover align-middle">
+                            <thead class="table-info">
+                                <tr>
+                                    <th>Book</th>
+                                    <th>Image</th>
+                                    <th>Genre</th>
+                                    <th>Unit Price (EGP)</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in order.OrderDetail)
+                                {
+                                    <tr>
+                                        <td>@item.Book.BookName</td>
+                                        <td>
+                                            <img src="/images/@(string.IsNullOrEmpty(item.Book.Image) ? "NoImage.png" : item.Book.Image)"
+                                                 class="img-thumbnail" style="width:70px;height:90px" />
+                                        </td>
+                                        <td>@item.Book.Genre.GenreName</td>
+                                        <td>@item.Book.Price</td>
+                                        <td>@item.Quantity</td>
+                                        <td><strong>@(item.Book.Price * item.Quantity)</strong></td>
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr class="table-light">
+                                    <td colspan="5" class="text-end fw-bold">Total Order Price:</td>
+                                    <td class="fw-bold text-success">
+                                        @order.OrderDetail.Select(i => i.Book.Price * i.Quantity).Sum() EGP
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        @if (!order.IsDeleted && !order.IsPaid && order.OrderStatus.StatusName != "Cancelled")
+                        {
+                            <form asp-action="CancelOrder" asp-controller="UserOrder" method="post">
+                                <input type="hidden" name="orderId" value="@order.Id" />
+                                <button type="submit" class="btn btn-danger btn-sm"> Cancel Order</button>
+                            </form>
+                        }
+                        else if (order.OrderStatus.StatusName == "Cancelled")
+                        {
+                            <span class="badge bg-danger">Cancelled</span>
+                        }
+
+                    }
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="alert alert-info">
+            <strong>Note:</strong> You have no orders yet.
+        </div>
+    }
+<div class="container mt-4">
+    <a href="/Home" class="btn btn-outline-primary mb-3">← Back </a>
+   
+
+</div>
+
+
+

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Genre>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="text-primary"> Genres List</h2>
+        <a asp-action="AddGenre" asp-controller="Genre" class="btn btn-success btn-lg rounded-3 shadow-sm">
+             Add New Genre
+        </a>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info shadow-sm">No genres found.</div>
+    }
+    else
+    {
+        <div class="table-responsive shadow rounded-4 overflow-hidden">
+            <table class="table table-hover table-bordered mb-0 bg-white">
+                <thead class="table-dark">
+                    <tr>
+                        <th style="width: 70%;">Genre Name</th>
+                        <th style="width: 30%;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var genre in Model)
+                    {
+                        <tr>
+                            <td class="align-middle fw-semibold">@genre.GenreName</td>
+                            <td class="text-center">
+                                <a asp-action="UpdateGenre" asp-controller="Genre" asp-route-id="@genre.Id" class="btn btn-warning btn-sm me-2">
+                                     Edit
+                                </a>
+                                
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>

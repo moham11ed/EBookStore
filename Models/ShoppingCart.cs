@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EBook.Models
+namespace BookShoppingCartMvcUI.Models
 {
     
     public class ShoppingCart
@@ -11,6 +12,8 @@ namespace EBook.Models
         public bool IsDeleted { get; set; } = false;
 
         public ICollection<CartDetail> CartDetails { get; set; }
+        [NotMapped]
+        public ICollection<CartDetail> cart { get; set; }
         
     }
 }

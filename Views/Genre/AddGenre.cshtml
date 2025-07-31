@@ -1,0 +1,32 @@
+﻿@model GenreDTO
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5 mb-5" style="max-width: 500px;">
+    <div class="card shadow rounded-4">
+        <div class="card-header bg-success text-white rounded-top-4">
+            <h3 class="mb-0">Add New Genre</h3>
+        </div>
+
+        <div class="card-body bg-light rounded-bottom-4">
+            <a asp-action="Index" asp-controller="Genre" class="btn btn-secondary mb-3">← Back to List</a>
+
+            <form asp-action="AddGenre">
+         
+
+                <div class="form-group mb-3">
+                    <label class="form-label fw-semibold" asp-for="GenreName">Genre Name *</label>
+                    <input type="text" class="form-control" asp-for="GenreName" placeholder="Enter genre name" />
+                    <span asp-validation-for="GenreName" class="text-danger"></span>
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-success btn-lg text-white">
+                         Add Genre
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

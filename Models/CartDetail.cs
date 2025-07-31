@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EBook.Models
+namespace BookShoppingCartMvcUI.Models
 {
-    
+    [Table("CartDetails")]
     public class CartDetail
     {
         public int Id { get; set; }

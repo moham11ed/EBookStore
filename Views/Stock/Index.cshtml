@@ -1,0 +1,53 @@
+﻿@model IEnumerable<StockDisplayModel>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4 text-primary">📦 Stocks Management</h2>
+
+    <form asp-action="Index" method="get" class="row g-2 align-items-center mb-4" style="max-width: 600px;">
+        <div class="col-auto">
+            <input type="text" name="sTerm" class="form-control" placeholder="Search by book" />
+        </div>
+        <div class="col-auto d-flex gap-2">
+            <button type="submit" class="btn btn-primary">Find</button>
+            <a asp-action="Index" asp-controller="Stock" class="btn btn-outline-secondary">Clear</a>
+        </div>
+    </form>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-warning" style="max-width: 600px;">
+            No stocks found.
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive" style="max-width: 700px;">
+            <table class="table table-bordered table-striped align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Book</th>
+                        <th style="width: 120px;">Stock Quantity</th>
+                        <th style="width: 150px;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.BookName</td>
+                            <td class="text-center">@item.Quantity</td>
+                            <td>
+                                <a asp-action="ManangeStock" asp-controller="Stock" asp-route-bookId="@item.BookId" class="btn btn-info btn-sm">
+                                    Update Stock
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>

@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using BookShoppingCartMvcUI.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace EBook.Models
+namespace BookShoppingCartMvcUI.Models
 {
     public class ApplicationDbContext : IdentityDbContext
     {
@@ -9,6 +10,12 @@ namespace EBook.Models
             : base(options)
         {
         }
+
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer("Data Source=SAAD;Initial Catalog=BookStore;Integrated Security=True;Encrypt=False;Trust Server Certificate=True");
+        //    base.OnConfiguring(optionsBuilder);
+        //}
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }

@@ -1,4 +1,4 @@
-namespace EBook.Models
+namespace BookShoppingCartMvcUI.Models
 {
     public class ErrorViewModel
     {

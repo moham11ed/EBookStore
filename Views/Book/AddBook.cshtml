@@ -1,0 +1,53 @@
+﻿@model BookDTO
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5 mb-5" style="max-width: 600px;">
+    <div class="card shadow rounded-4">
+        <div class="card-header bg-primary text-white rounded-top-4">
+            <h3 class="mb-0"> Add New Book</h3>
+        </div>
+
+        <div class="card-body bg-light rounded-bottom-4">
+            <a asp-action="Index" asp-controller="Book" class="btn btn-secondary mb-3">← Back to List</a>
+
+            <form asp-action="AddBook" enctype="multipart/form-data">
+                <div class="form-group mb-3">
+                    <label for="BookName" class="form-label fw-semibold">Book Name *</label>
+                    <input type="text" class="form-control" asp-for="BookName" placeholder="Enter book title" />
+                    <span asp-validation-for="BookName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="AuthorName" class="form-label fw-semibold">Author *</label>
+                    <input type="text" class="form-control" asp-for="AuthorName" placeholder="Enter author's name" />
+                    <span asp-validation-for="AuthorName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="GenreId" class="form-label fw-semibold">Genre *</label>
+                    <select class="form-select" asp-for="GenreId" asp-items="Model.GenreList">
+                        <option value="">-- Select Genre --</option>
+                    </select>
+                    <span asp-validation-for="GenreId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="Price" class="form-label fw-semibold">Price *</label>
+                    <input type="number" class="form-control" asp-for="Price" placeholder="Enter price in $" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="ImageFile" class="form-label fw-semibold">Book Cover (optional)</label>
+                    <input type="file" class="form-control" asp-for="ImageFile" />
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-success btn-lg">Add Book</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

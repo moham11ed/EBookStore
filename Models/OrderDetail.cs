@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace EBook.Models
+namespace BookShoppingCartMvcUI.Models
 {
     
     public class OrderDetail

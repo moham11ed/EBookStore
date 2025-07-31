@@ -1,0 +1,38 @@
+﻿@model UpdateOrderStatusModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
+
+    ViewData["Title"] = "Update Order Status";
+}
+
+<div class="container mt-4" style="max-width: 600px;">
+    <h3 class="mb-3"> Update Order Status</h3>
+    <a class="btn btn-outline-secondary mb-4" asp-action="AllOrders">
+        ← Back to Orders
+    </a>
+
+    <form asp-action="UpdateOrderStatus" method="post" class="shadow-sm p-4 rounded bg-light border">
+        <input type="hidden" asp-for="OrderId" />
+
+        <div class="mb-3">
+            <label asp-for="OrderStatusId" class="form-label fw-bold"> Order Status</label>
+            <select asp-for="OrderStatusId" asp-items="@Model.OrderStatusList" class="form-select">
+                <option value="">-- Select Order Status --</option>
+            </select>
+            <span asp-validation-for="OrderStatusId" class="text-danger"></span>
+        </div>
+
+        <div class="d-grid">
+            <button type="submit" class="btn btn-primary">
+                 Update Status
+            </button>
+        </div>
+
+        @if (TempData["msg"] != null)
+        {
+            <div class="alert alert-info mt-3">
+                @TempData["msg"]
+            </div>
+        }
+    </form>
+</div>
